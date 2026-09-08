@@ -12,6 +12,13 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
-    "typescript": "^7.0.2"
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "@reduxjs/toolkit": "^2.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-redux": "^9.0.0",
+    "@microsoft/signalr": "^8.0.0"
   }
 }
