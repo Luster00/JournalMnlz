@@ -475,6 +475,82 @@ body {
     box-shadow: 0 0 0 3px rgba(75, 85, 99, 0.1);
 }
 
+/* Заметки */
+.notes-section {
+    background: linear-gradient(135deg, var(--gray-50) 0%, var(--surface) 100%);
+    padding: 20px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+}
+
+.notes-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary-light), var(--primary), var(--primary-hover));
+    border-radius: var(--radius) var(--radius) 0 0;
+}
+
+.notes-section h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.notes-section h3::before {
+    content: '📝';
+    font-size: 18px;
+}
+
+#editNotes {
+    width: 100%;
+    padding: 14px 16px;
+    border: 2px solid var(--border);
+    border-radius: var(--radius);
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-primary);
+    background: var(--surface);
+    transition: var(--transition);
+    resize: vertical;
+    min-height: 120px;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, monospace;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+#editNotes:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(75, 85, 99, 0.1), inset 0 1px 2px rgba(0, 0, 0, 0.05);
+    background: var(--surface);
+}
+
+#editNotes::placeholder {
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+#editNotes:hover {
+    border-color: var(--gray-400);
+}
+
+[data-theme="dark"] #editNotes {
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] #editNotes:focus {
+    box-shadow: 0 0 0 4px rgba(156, 163, 175, 0.15), inset 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
 .form-group textarea {
     resize: vertical;
     min-height: 80px;
