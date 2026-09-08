@@ -1,0 +1,143 @@
+﻿<Window x:Class="MnlzJournal.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Журнал тестирования сегментов МНЛЗ" Height="700" Width="1200"
+        WindowStartupLocation="CenterScreen"
+        MinWidth="900" MinHeight="500">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Шапка -->
+        <Border Grid.Row="0" Background="White" BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,0,0,1" Padding="20,16">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Column="0" Text="Журнал тестирования сегментов МНЛЗ" FontSize="20" FontWeight="SemiBold" VerticalAlignment="Center"/>
+
+                <TextBox x:Name="SearchBox" Grid.Column="1" MaxWidth="400" HorizontalAlignment="Left" Margin="189,0,0,0"
+                         Tag="Поиск по сегменту, ФИО или заметкам..." 
+                         GotFocus="SearchBox_GotFocus" LostFocus="SearchBox_LostFocus" TextChanged="SearchBox_TextChanged" Width="280"/>
+
+                <StackPanel Grid.Column="2" Orientation="Horizontal">
+                    <Button x:Name="AddButton" Content="Добавить" Click="AddButton_Click" Margin="0,0,8,0"/>
+                    <Button x:Name="EditButton" Content="Изменить" Style="{StaticResource SecondaryButton}" Click="EditButton_Click" Margin="0,0,8,0"/>
+                    <Button x:Name="DeleteButton" Content="Удалить" Style="{StaticResource SecondaryButton}" Click="DeleteButton_Click"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- Основная область (Таблица) -->
+        <Border Grid.Row="1" Background="{StaticResource CardBrush}" CornerRadius="8" Margin="20" Effect="{StaticResource CardShadow}">
+            <DataGrid x:Name="MainGrid" AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True"
+                      CanUserResizeColumns="False" CanUserResizeRows="False" CanUserReorderColumns="False"
+                      ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                      ScrollViewer.VerticalScrollBarVisibility="Auto">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="1*" MinWidth="60">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="HorizontalAlignment" Value="Center"/>
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+
+                    <DataGridTextColumn Header="Дата" Binding="{Binding TestDate, StringFormat=dd.MM.yyyy}" Width="1.2*" MinWidth="100">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="HorizontalAlignment" Value="Center"/>
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+
+                    <DataGridTextColumn Header="Сегмент" Binding="{Binding SegmentNumber}" Width="1*" MinWidth="90">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="HorizontalAlignment" Value="Center"/>
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+
+                    <DataGridTextColumn Header="ФИО" Binding="{Binding LastName}" Width="2*" MinWidth="150"/>
+
+                    <!-- Левая сторона -->
+                    <DataGridTextColumn Header="Лев. Вход (В)" Binding="{Binding LeftInTop, StringFormat=F3}" Width="1.2*" MinWidth="100">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="HorizontalAlignment" Value="Center"/>
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="Лев. Вход (Н)" Binding="{Binding LeftInBottom, StringFormat=F3}" Width="1.2*" MinWidth="100">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="HorizontalAlignment" Value="Center"/>
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="Лев. Выход (В)" Binding="{Binding LeftOutTop, StringFormat=F3}" Width="1.2*" MinWidth="100">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="HorizontalAlignment" Value="Center"/>
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="Лев. Выход (Н)" Binding="{Binding LeftOutBottom, StringFormat=F3}" Width="1.2*" MinWidth="100">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="HorizontalAlignment" Value="Center"/>
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+
+                    <!-- Правая сторона -->
+                    <DataGridTextColumn Header="Пр. Вход (В)" Binding="{Binding RightInTop, StringFormat=F3}" Width="1.2*" MinWidth="100">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="HorizontalAlignment" Value="Center"/>
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="Пр. Вход (Н)" Binding="{Binding RightInBottom, StringFormat=F3}" Width="1.2*" MinWidth="100">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="HorizontalAlignment" Value="Center"/>
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="Пр. Выход (В)" Binding="{Binding RightOutTop, StringFormat=F3}" Width="1.2*" MinWidth="100">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="HorizontalAlignment" Value="Center"/>
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="Пр. Выход (Н)" Binding="{Binding RightOutBottom, StringFormat=F3}" Width="1.2*" MinWidth="100">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="HorizontalAlignment" Value="Center"/>
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+
+                    <DataGridTextColumn Header="Заметки" Binding="{Binding Notes}" Width="2*" MinWidth="150"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Border>
+
+        <!-- Статус-бар -->
+        <Border Grid.Row="2" Background="White" BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,1,0,0" Padding="20,10">
+            <Grid>
+                <TextBlock x:Name="RecordCountText" HorizontalAlignment="Left" Foreground="{StaticResource TextMutedBrush}"/>
+                <TextBlock x:Name="StatusText" HorizontalAlignment="Right" FontWeight="SemiBold" Foreground="{StaticResource PrimaryBrush}"/>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>
