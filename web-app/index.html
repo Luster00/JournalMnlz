@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Журнал тестирования сегментов МНЛЗ</title>
+    <title>Журнал сегментов МНЛЗ</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     <div class="app-container">
         <!-- Шапка -->
         <header class="header">
-            <h1 class="header-title">Журнал тестирования сегментов МНЛЗ</h1>
+            <h1 class="header-title">Журнал сегментов МНЛЗ</h1>
             <div class="header-controls">
                 <input type="text" id="searchBox" class="search-box" placeholder="Поиск по сегменту, ФИО или заметкам...">
                 <div class="button-group">
@@ -92,7 +92,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="editSegment">Номер сегмента</label>
-                                <input type="text" id="editSegment" required>
+                                <input type="text" id="editSegment" placeholder="Например: 1.6.7" pattern="\d+\.\d+\.\d+" title="Формат: X.X.X (например, 1.6.7)" required>
                             </div>
                             <div class="form-group">
                                 <label for="editLastName">ФИО сотрудника</label>

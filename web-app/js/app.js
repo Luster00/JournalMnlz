@@ -306,9 +306,16 @@ class MnlzJournalApp {
         const segment = document.getElementById('editSegment').value.trim();
         const lastName = document.getElementById('editLastName').value.trim();
         
-        // Валидация
+        // Валидация формата сегмента (X.X.X)
+        const segmentPattern = /^\d+\.\d+\.\d+$/;
         if (!segment) {
             alert('Укажите номер сегмента.');
+            document.getElementById('editSegment').focus();
+            return;
+        }
+        
+        if (!segmentPattern.test(segment)) {
+            alert('Номер сегмента должен быть в формате X.X.X (например, 1.6.7 или 1.8.2)');
             document.getElementById('editSegment').focus();
             return;
         }
