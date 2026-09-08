@@ -1,43 +1,36 @@
 ```
 # Build artifacts
-bin/
 obj/
+bin/
+Debug/
+Release/
 *.dll
 *.exe
 *.pdb
-*.config
-*.runtimeconfig.json
-*.deps.json
-*.props
-*.targets
+*.userprefs
+*.cache
+*.manifest
+*.tmp
 
 # Dependencies
 packages/
-node_modules/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
 
 # Logs
 *.log
 
-# Environment specific files
+# User-specific files
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Environment
 .env
 .env.local
-*.env
+*.env.*
 
 # OS generated files
 .DS_Store
 Thumbs.db
-
-# IDE files
-.vscode/
-.idea/
-*.swp
-*.swo
-
-# User-specific files
-*.userprefs
-*.user
-.vs/
 ```
