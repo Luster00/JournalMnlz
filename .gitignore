@@ -15,8 +15,6 @@ node_modules/
 .mypy_cache/
 .pytest_cache/
 .gradle/
-julia-*/
-zig*/
 
 # Logs and temp files
 *.log
@@ -27,13 +25,13 @@ zig*/
 # Environment
 .env
 .env.local
-*.env.*
+.env.*
 
 # Editors
 .vscode/
 .idea/
 
-# System files
+# OS generated files
 .DS_Store
 Thumbs.db
 
@@ -61,4 +59,8 @@ htmlcov/
 *.Z
 *.lz
 *.lzo
+*.tar.gz
+*.tar.bz2
+*.tar.xz
+*.tar.zst
 ```

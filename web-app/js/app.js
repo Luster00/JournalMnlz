@@ -10,6 +10,7 @@ class MnlzJournalApp {
     }
     
     init() {
+        this.loadTheme();
         this.loadData();
         this.bindEvents();
         this.render();
@@ -87,6 +88,11 @@ class MnlzJournalApp {
             this.applyFilter(e.target.value);
         });
         
+        // Переключатель темы
+        document.getElementById('themeToggle').addEventListener('click', () => {
+            this.toggleTheme();
+        });
+        
         // Кнопки
         document.getElementById('addBtn').addEventListener('click', () => this.addRecord());
         document.getElementById('editBtn').addEventListener('click', () => this.editRecord());
@@ -108,6 +114,28 @@ class MnlzJournalApp {
                 this.closeModal();
             }
         });
+    }
+    
+    // Переключение темы
+    toggleTheme() {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        
+        if (newTheme === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme', 'dark');
+        } else {
+            document.documentElement.removeAttribute('data-theme');
+            localStorage.setItem('theme', 'light');
+        }
+    }
+    
+    // Загрузка сохранённой темы
+    loadTheme() {
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        }
     }
     
     // Переключение вкладок
