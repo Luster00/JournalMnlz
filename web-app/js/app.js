@@ -98,10 +98,6 @@ class MnlzJournalApp {
         if (addBtn) {
             addBtn.addEventListener('click', () => this.addRecord());
         }
-        const editBtn = document.getElementById('editBtn');
-        if (editBtn) {
-            editBtn.addEventListener('click', () => this.editRecord());
-        }
         const deleteBtn = document.getElementById('deleteBtn');
         if (deleteBtn) {
             deleteBtn.addEventListener('click', () => this.deleteRecord());
@@ -208,9 +204,28 @@ class MnlzJournalApp {
                 <td>${this.formatNumber(record.rightInBottom)}</td>
                 <td>${this.formatNumber(record.rightOutTop)}</td>
                 <td>${this.formatNumber(record.rightOutBottom)}</td>
-                <td>${record.notes || ''}</td>
+                <td>
+                    <span class="notes-preview">${record.notes || '—'}</span>
+                    <button class="edit-btn-inline" title="Редактировать запись" data-id="${record.id}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                        </svg>
+                    </button>
+                </td>
             `;
             tbody.appendChild(tr);
+        });
+        // Добавляем обработчики на кнопки редактирования в строках
+        tbody.querySelectorAll('.edit-btn-inline').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation(); // Чтобы не срабатывал клик по строке
+                const target = btn;
+                const id = parseInt(target.dataset.id || '0');
+                if (id) {
+                    this.editRecordById(id);
+                }
+            });
         });
         // Обновление статус-бара
         const recordCountEl = document.getElementById('recordCount');
@@ -279,6 +294,13 @@ class MnlzJournalApp {
             return;
         }
         const record = this.records.find(r => r.id === this.selectedRow);
+        if (record) {
+            this.openModal(record, false);
+        }
+    }
+    // Редактирование записи по ID (для кнопки в строке)
+    editRecordById(id) {
+        const record = this.records.find(r => r.id === id);
         if (record) {
             this.openModal(record, false);
         }

@@ -331,6 +331,55 @@ body {
     border-bottom: none;
 }
 
+/* Кнопка редактирования в строке */
+.edit-btn-inline {
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 4px 6px;
+    cursor: pointer;
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    margin-left: 8px;
+    vertical-align: middle;
+}
+
+.edit-btn-inline:hover {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: white;
+    transform: scale(1.05);
+}
+
+.edit-btn-inline:active {
+    transform: scale(0.95);
+}
+
+.notes-preview {
+    color: var(--text-secondary);
+    font-style: italic;
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+[data-theme="dark"] .edit-btn-inline {
+    border-color: var(--gray-600);
+    color: var(--text-secondary);
+}
+
+[data-theme="dark"] .edit-btn-inline:hover {
+    background: var(--primary);
+    border-color: var(--primary-hover);
+    color: white;
+}
+
 /* Статус-бар */
 .status-bar {
     background: var(--surface);
