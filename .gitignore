@@ -1,16 +1,11 @@
 ```
-# Build artifacts
-bin/
-obj/
-*.exe
-*.dll
-*.pdb
-*.nupkg
-*.snupkg
-packages/
+# Dependencies
+node_modules/
 
-# Logs
-*.log
+# Build outputs
+dist/
+build/
+*.tsbuildinfo
 
 # Environment
 .env
@@ -20,32 +15,21 @@ packages/
 # Editors
 .vscode/
 .idea/
-*.swp
-*.swo
 
-# OS generated files
-.DS_Store
-Thumbs.db
-
-# User-specific files
-*.user
-*.userosscache
-*.suo
-*.csproj.user
-*.vbproj.user
-*.userprefs
-
-# Localized resources
-*.resources.dll
-
-# Testing
-TestResults/
-coverage/
-*.cover
+# Logs
 *.log
 
-# NuGet Packages
-*.nupkg
-*.snupkg
-packages/
+# Python (if present)
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Temp files
+*.tmp
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
 ```
