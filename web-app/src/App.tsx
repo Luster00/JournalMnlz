@@ -2,9 +2,9 @@ import React from 'react'
 
 const App: React.FC = () => {
   return (
-    <div>
+    <div style={{ padding: '20px' }}>
       <h1>Journal MNLZ</h1>
-      <p>Приложение загружается...</p>
+      <p>Приложение загружено успешно!</p>
     </div>
   )
 }

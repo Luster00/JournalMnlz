@@ -2,10 +2,11 @@
 # Dependencies
 node_modules/
 
-# Build outputs
+# Build artifacts
 dist/
 build/
-*.tsbuildinfo
+*.js.map
+*.css.map
 
 # Environment
 .env
@@ -15,21 +16,34 @@ build/
 # Editors
 .vscode/
 .idea/
+*.swp
+*.swo
 
 # Logs
 *.log
 
-# Python (if present)
+# Python
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
 
-# Temp files
+# Temporary files
 *.tmp
-*.swp
+*.temp
 
 # OS
 .DS_Store
 Thumbs.db
+
+# Coverage
+coverage/
+htmlcov/
+.coverage
+
+# Cache
+.mypy_cache/
+.pytest_cache/
+.nyc_output/
+coverage/
 ```
